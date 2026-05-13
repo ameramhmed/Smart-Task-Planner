@@ -2,10 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db, auth } from "../firebase";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { signOut } from "firebase/auth";
 import "./Dashboard.css";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const handleLogout = async () => {
+  await signOut(auth);
+  navigate("/");
+};
   const [tasks, setTasks] = useState([]);
   const hour = new Date().getHours();
   const greeting =
@@ -30,7 +35,7 @@ export default function Dashboard() {
       <div className="dash-header">
         <div className="dash-avatar">👤</div>
         <span className="dash-name">Visionary</span>
-        <span className="dash-calendar-icon">📅</span>
+        <span className="dash-calendar-icon" onClick={handleLogout} style={{cursor:"pointer"}} title="Logout">🚪</span>
       </div>
 
       {/* Greeting */}
