@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import AddTask from "./pages/AddTask";
+import Tasks from "./pages/Tasks";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
@@ -19,6 +20,11 @@ function App() {
         <Route path="/add-task" element={
           <ProtectedRoute>
             <AddTask />
+          </ProtectedRoute>
+        } />
+        <Route path="/tasks" element={
+          <ProtectedRoute>
+            <Tasks />
           </ProtectedRoute>
         } />
       </Routes>
