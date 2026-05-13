@@ -1,0 +1,183 @@
+.dashboard {
+  max-width: 390px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f7f8fc;
+  padding: 24px 20px 80px;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+/* Header */
+.dash-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.dash-avatar {
+  font-size: 28px;
+  background: #e0e7ff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash-name {
+  font-weight: 700;
+  font-size: 16px;
+  flex: 1;
+  color: #1a1a2e;
+}
+
+.dash-calendar-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Greeting */
+.dash-greeting {
+  margin-bottom: 20px;
+}
+
+.dash-greeting h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.dash-greeting p {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* AI Card */
+.ai-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.ai-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #3d5a99;
+  margin-bottom: 8px;
+}
+
+.ai-card p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.ai-btn {
+  background: #3d5a99;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.ai-btn:hover {
+  background: #2e4a89;
+}
+
+/* Tasks */
+.tasks-section {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.tasks-header h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #3d5a99;
+  cursor: pointer;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.task-time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 390px;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  border-radius: 20px 20px 0 0;
+}
+
+.nav-item {
+  font-size: 12px;
+  color: #aaa;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-item.active {
+  color: #3d5a99;
+  font-weight: 700;
+}
