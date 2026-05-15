@@ -20,10 +20,7 @@ export default function Dashboard() {
   useEffect(() => {
     const user = auth.currentUser;
     if (!user) return;
-    const q = query(
-      collection(db, "tasks"),
-      where("uid", "==", user.uid)
-    );
+    const q = query(collection(db, "tasks"), where("uid", "==", user.uid));
     const unsub = onSnapshot(q, (snapshot) => {
       setTasks(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
@@ -32,23 +29,27 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
+      {/* Header */}
       <div className="dash-header">
         <div className="dash-avatar">👤</div>
         <span className="dash-name">Visionary</span>
         <span className="dash-calendar-icon" onClick={handleLogout} style={{cursor:"pointer"}} title="Logout">🚪</span>
       </div>
 
+      {/* Greeting */}
       <div className="dash-greeting">
         <h1>{greeting}.</h1>
         <p>You have {tasks.length} tasks requiring your attention today.</p>
       </div>
 
+      {/* AI Insights */}
       <div className="ai-card">
         <div className="ai-title">✦ AI Insights</div>
         <p>Based on your schedule, you have a 2-hour deep work window at 1:00 PM. Suggest prioritizing your top task.</p>
         <button className="ai-btn" onClick={() => navigate("/ai-plan")}>Schedule Now</button>
       </div>
 
+      {/* Today's Tasks */}
       <div className="tasks-section">
         <div className="tasks-header">
           <h2>Today's Tasks</h2>
@@ -71,6 +72,7 @@ export default function Dashboard() {
         )}
       </div>
 
+      {/* Bottom Nav */}
       <div className="bottom-nav">
         <div className="nav-item active" onClick={() => navigate("/dashboard")}>Tasks</div>
         <div className="nav-item" onClick={() => navigate("/tasks")}>All</div>

@@ -19,12 +19,10 @@ export default function AIplan() {
       const user = auth.currentUser;
       if (!user) return;
 
-      // جيبي المهام من Firebase
       const q = query(collection(db, "tasks"), where("uid", "==", user.uid));
       const snapshot = await getDocs(q);
       const tasks = snapshot.docs.map((doc) => doc.data());
 
-      // أرسليهم للـ AI
       const taskList = tasks.map((t) => `- ${t.title} (${t.priority} priority, due: ${t.dueDate || "flexible"})`).join("\n");
 
       const response = await fetch("https://api.anthropic.com/v1/messages", {
@@ -65,7 +63,6 @@ ${taskList || "No tasks yet, suggest a general productive schedule"}`
 
   return (
     <div className="aiplan-page">
-      {/* Header */}
       <div className="aiplan-header">
         <div className="dash-avatar">👤</div>
         <span className="aiplan-name">Visionary</span>
@@ -100,12 +97,11 @@ ${taskList || "No tasks yet, suggest a general productive schedule"}`
         </div>
       )}
 
-      {/* Bottom Nav */}
       <div className="bottom-nav">
-        <div className="nav-item" onClick={() => navigate("/dashboard")}>✅ Tasks</div>
-        <div className="nav-item" onClick={() => navigate("/tasks")}>📋 All</div>
-        <div className="nav-item">📊 Insights</div>
-        <div className="nav-item active">🤖 AI</div>
+        <div className="nav-item" onClick={() => navigate("/dashboard")}>Tasks</div>
+        <div className="nav-item" onClick={() => navigate("/tasks")}>All</div>
+        <div className="nav-item" onClick={() => navigate("/tasks")}>Insights</div>
+        <div className="nav-item active">AI</div>
       </div>
     </div>
   );

@@ -175,9 +175,21 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  padding: 8px 12px;  /* أضيفي هاد */
+  min-width: 50px;    /* وأضيفي هاد */
+  user-select: none;  /* وأضيفي هاد */
 }
 
 .nav-item.active {
   color: #3d5a99;
   font-weight: 700;
+}
+.bottom-nav {
+  z-index: 9999 !important;
+}
+
+.nav-item {
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  position: relative;
 }

@@ -36,14 +36,12 @@ export default function Tasks() {
 
   return (
     <div className="tasks-page">
-      {/* Header */}
       <div className="tasks-header">
         <div className="dash-avatar">👤</div>
         <span className="tasks-title">Visionary</span>
         <span>📅</span>
       </div>
 
-      {/* Filter Tabs */}
       <div className="filter-tabs">
         {["All", "High", "Medium", "Low"].map((f) => (
           <button
@@ -56,7 +54,6 @@ export default function Tasks() {
         ))}
       </div>
 
-      {/* Task Cards */}
       <div className="task-cards">
         {filteredTasks.length === 0 ? (
           <p className="no-tasks">No tasks found!</p>
@@ -80,15 +77,13 @@ export default function Tasks() {
         )}
       </div>
 
-      {/* Add Button */}
       <button className="fab" onClick={() => navigate("/add-task")}>+</button>
 
-      {/* Bottom Nav */}
       <div className="bottom-nav">
-        <div className="nav-item" onClick={() => navigate("/dashboard")}>✅ Tasks</div>
-        <div className="nav-item active">📋 All</div>
-        <div className="nav-item">📊 Insights</div>
-        <div className="nav-item">🤖 AI</div>
+        <div className="nav-item" onClick={() => navigate("/dashboard")}>Tasks</div>
+        <div className="nav-item active">All</div>
+        <div className="nav-item" onClick={() => navigate("/ai-plan")}>Insights</div>
+        <div className="nav-item" onClick={() => navigate("/ai-plan")}>AI</div>
       </div>
     </div>
   );
