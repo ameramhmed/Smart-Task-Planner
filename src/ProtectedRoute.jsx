@@ -12,6 +12,6 @@ export default function ProtectedRoute({ children }) {
   }, []);
 
   if (user === undefined) return <p style={{textAlign:"center", marginTop:"40vh"}}>Loading...</p>;
-  if (!user) return <Navigate to="/" />;
+  if (!user) return <Navigate to="/login" />;
   return children;
 }
