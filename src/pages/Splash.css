@@ -1,6 +1,6 @@
 .splash-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: #f0f2f8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   animation: fadeIn 1s ease-in;
 }
 
@@ -20,53 +20,35 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-.splash-logo {
+.splash-icon {
   font-size: 64px;
-  color: #5b9bd5;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  background: #e8eaf6;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
 .splash-title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
-  color: white;
+  color: #1a1a2e;
   letter-spacing: 1px;
 }
 
 .splash-subtitle {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 500;
+  color: #888;
+  font-weight: 400;
 }
 
-.splash-loader {
-  display: flex;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.splash-dot {
-  width: 8px;
-  height: 8px;
-  background: #5b9bd5;
-  border-radius: 50%;
-  animation: bounce 1.4s infinite ease-in-out both;
-}
-
-.splash-dot:nth-child(1) {
-  animation-delay: -0.32s;
-}
-
-.splash-dot:nth-child(2) {
-  animation-delay: -0.16s;
-}
-
-@keyframes bounce {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1); }
+.splash-line {
+  width: 40px;
+  height: 4px;
+  background: #3d5a99;
+  border-radius: 2px;
+  margin-top: 32px;
 }
