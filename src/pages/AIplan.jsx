@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import "./AIplan.css";
+import { generateRecommendations } from "../services/recommendation"; 
 
 export default function AIplan() {
   const [plan, setPlan] = useState(null);
@@ -13,53 +14,36 @@ export default function AIplan() {
     generatePlan();
   }, []);
 
-  const generatePlan = async () => {
-    setLoading(true);
-    try {
-      const user = auth.currentUser;
-      if (!user) return;
+const generatePlan = async () => {
+  setLoading(true);
 
-      const q = query(collection(db, "tasks"), where("uid", "==", user.uid));
-      const snapshot = await getDocs(q);
-      const tasks = snapshot.docs.map((doc) => doc.data());
+  try {
+    const user = auth.currentUser;
+    if (!user) return;
 
-      const taskList = tasks.map((t) => `- ${t.title} (${t.priority} priority, due: ${t.dueDate || "flexible"})`).join("\n");
+    const q = query(collection(db, "tasks"), where("uid", "==", user.uid));
+    const snapshot = await getDocs(q);
 
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          messages: [{
-            role: "user",
-            content: `You are a productivity AI. Based on these tasks, create an optimized daily schedule. Return ONLY a JSON array like this format, no extra text:
-[
-  {"time": "09:00 AM", "title": "Task name", "duration": "120 min block", "tags": ["High Focus"], "aiOptimized": true},
-  {"time": "11:15 AM", "title": "Task name", "duration": "45 min", "tags": ["Team"], "aiOptimized": false}
-]
+    const tasks = snapshot.docs.map((doc) => doc.data());
 
-Tasks:
-${taskList || "No tasks yet, suggest a general productive schedule"}`
-          }]
-        })
-      });
+    const result = await generateRecommendations(tasks);
 
-      const data = await response.json();
-      const text = data.content[0].text;
-      const clean = text.replace(/```json|```/g, "").trim();
-      const parsed = JSON.parse(clean);
-      setPlan(parsed);
-    } catch (err) {
-      console.error(err);
-      setPlan([
-        { time: "09:00 AM", title: "Deep Work Session", duration: "120 min block", tags: ["High Focus", "Strategic"], aiOptimized: true },
-        { time: "11:15 AM", title: "Team Sync & Blockers", duration: "45 min", tags: ["Team"], aiOptimized: false },
-        { time: "01:00 PM", title: "Creative Review", duration: "90 min block", tags: ["Creative", "Medium Energy"], aiOptimized: true },
-      ]);
-    }
-    setLoading(false);
-  };
+    setPlan(result);
+  } catch (err) {
+    console.error(err);
+
+    setPlan([
+  {
+    title: "Start with your highest priority task",
+    reason: "This helps you finish the most important work first.",
+    action: "Choose the task with the closest deadline and work on it before anything else.",
+    priority: "High",
+  },
+]);
+  }
+
+  setLoading(false);
+};
 
   return (
     <div className="aiplan-page">
