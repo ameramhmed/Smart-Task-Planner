@@ -72,7 +72,7 @@ export default function Signup() {
         </form>
 
         <p className="login-link">
-          Already have an account? <span onClick={() => navigate("/")}>Log In</span>
+          Already have an account? <span onClick={() => navigate("/login")}>Log In</span>
         </p>
       </div>
     </div>
