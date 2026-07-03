@@ -1,16 +1,101 @@
-# React + Vite
+Smart Task Planner 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A smart web application that helps users organize their daily tasks and prioritize them using AI.
 
-Currently, two official plugins are available:
+Group Graduation Project - Isra University
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ About the Project
 
-## Expanding the ESLint configuration
+Smart Task Planner is a web application that allows users to easily create and manage their daily tasks, featuring an AI capability that suggests an optimized daily plan based on task priorities and due dates.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+ Team
+
+| Name | Role |
+
+| Amera Mohammed Alshafei | UX/UI Design & Frontend Development |
+| Dina | Backend & Database Developer |
+| Afnan | AI Specialist & Documentation |
+
+
+
+ Tech Stack
+
+- **Frontend:** React.js + Vite
+- **Backend:** Node.js + Express.js
+- **Database & Auth:** Firebase (Authentication, Firestore)
+- **AI Integration:** Groq API
+- **Version Control:** Git & GitHub
+- **Design:** Figma
+- **Task Management:** Trello
+
+---
+
+## ✨ Key Features
+
+- 🔐 Login and Sign Up (Firebase Authentication)
+- 🏠 Main Dashboard displaying tasks in real time
+- ➕ Add new tasks with priority and due date
+- 📋 Task Management page (filter, complete, delete)
+- 🤖 AI-powered optimized daily plan
+- 🛡️ Protected Routes to prevent unauthorized access
+- 🚪 Logout functionality
+- ⚙️ Backend API built with Node.js/Express to support authentication and task operations
+
+---
+
+## 📁 Project Structure
+
+```
+smart-task-planner/
+├── public/
+├── src/
+│   ├── pages/          # App pages (Login, Signup, Dashboard, ...)
+│   ├── firebase.js     # Firebase configuration
+│   ├── ProtectedRoute.jsx
+│   ├── App.jsx
+│   └── main.jsx
+├── backend/             # Backend API code (Node.js + Express)
+├── package.json
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### Run the Frontend
+```bash
+# Clone the repository
+git clone https://github.com/ameramhmed/Smart-Task-Planner.git
+
+# Navigate to the project folder
+cd Smart-Task-Planner
+
+# Install dependencies
+npm install
+
+# Run the project
+npm run dev
+```
+
+### Run the Backend
+See `backend/README.md` for full setup and running instructions.
+
+---
+
+## 🌿 Git Branches
+
+- `main` — Stable main branch (contains all merged parts)
+- `feature/frontend` — Frontend UI (Amera)
+- `feature/ai` — AI feature (Afnan) — Merged ✅
+- `feature/backend` — Backend API (Dina) — Merged ✅
+
+---
+
+## 📄 License
+
+Academic project for educational purposes - Isra University 2026
