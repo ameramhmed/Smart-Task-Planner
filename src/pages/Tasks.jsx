@@ -39,7 +39,7 @@ export default function Tasks() {
       <div className="tasks-header">
         <div className="dash-avatar">👤</div>
         <span className="tasks-title">Visionary</span>
-        <span>📅</span>
+        <span title="Calendar view coming soon" style={{cursor:"default", opacity:0.5}}>📅</span>
       </div>
 
       <div className="filter-tabs">
